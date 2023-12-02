@@ -1,0 +1,46 @@
+{
+    "examples":[
+        {
+            "prompt": "I'm thinking of an object. Guess what it is. [INST] Is it bigger than a car? [/INST] Yes, it's bigger than a car. [INST] Is it alive? [/INST] No, it's not alive. [INST] I give up. [/INST] It's a house!",
+            "category": "guess_house",
+            "raw": true
+        },
+        {
+            "prompt": "I'm thinking of an object. Guess what it is. [INST] Is it bigger than a car? [/INST] Yes, it's bigger than a car. [INST] Is it alive? [/INST] Yes, it's alive. [INST] I give up. [/INST] It's a whale!",
+            "category": "guess_whale",
+            "raw": true
+        },
+        {
+            "prompt": "I'm thinking of an object. Guess what it is. [INST] Is it bigger than a car? [/INST] No, it's smaller than a car. [INST] Is it alive? [/INST] Yes, it's alive. [INST] I give up. [/INST] It's a dog!",
+            "category": "guess_dog",
+            "raw": true
+        },
+        {
+            "prompt": "I'm thinking of an object. Guess what it is. [INST] Is it bigger than a car? [/INST] No, it's smaller than a car. [INST] Is it alive? [/INST] No, it's not alive. [INST] I give up. [/INST] It's a cup!",
+            "category": "guess_cup",
+            "raw": true
+        },
+        {
+            "prompt": "I'm thinking of an object. Guess what it is. [INST] Is it bigger than a car? [/INST] Yes, it's bigger than a car. [INST] Is it alive? [/INST] Yes, it's alive. [INST] I give up. [/INST] It's a rhino!",
+            "category": "guess_rhino",
+            "raw": true
+        },
+        {
+            "prompt": "I'm thinking of an object. Guess what it is. [INST] Is it bigger than a car? [/INST] No, it's smaller than a car. [INST] Is it alive? [/INST] Yes, it's alive. [INST] I give up. [/INST] It's a snail!",
+            "category": "guess_snail",
+            "raw": true
+        },
+        {
+            "prompt": "I'm thinking of an object. Guess what it is. [INST] Is it bigger than a car? [/INST] No, it's smaller than a car. [INST] Is it alive? [/INST] No, it's not alive. [INST] I give up. [/INST] It's a book!",
+            "category": "guess_book",
+            "raw": true
+        },
+        {
+            "prompt": "I'm thinking of an object. Guess what it is. [INST] Is it bigger than a car? [/INST] Yes, it's bigger than a car. [INST] Is it alive? [/INST] No, it's not alive. [INST] I give up. [/INST] It's a star!",
+            "category": "guess_star",
+            "raw": true
+        }
+    ]
+}
+
+
