@@ -709,12 +709,13 @@ class LlamaDecoderLayer(nn.Module):
         # Fully Connected
         residual = hidden_states
         hidden_states = self.post_attention_layernorm(hidden_states)
+        pre_mlp = hidden_states
         hidden_states = self.mlp(hidden_states)
 
         hidden_states = hidden_states.to(residual.device)
         # print(hidden_states.device)
         # print(residual.device)
-        original_hidden_states = hidden_states
+        original_hidden_states = (pre_mlp, residual)
         hidden_states = residual + hidden_states
 
         outputs = (hidden_states,)
@@ -1091,7 +1092,7 @@ class LlamaModel(LlamaPreTrainedModel):
         )
 
         hidden_states = inputs_embeds
-        original_hidden_states = inputs_embeds
+        original_hidden_states = (inputs_embeds, inputs_embeds)
 
         # print("inputs_embeds", inputs_embeds.shape)
 
@@ -1316,6 +1317,7 @@ class LlamaForCausalLM(LlamaPreTrainedModel):
         output_hidden_states: Optional[bool] = None,
         return_dict: Optional[bool] = None,
         insert_info = None,
+        output_pre_mlp_states = False,
     ) -> Union[Tuple, CausalLMOutputWithPast]:
         r"""
         Args:
@@ -1393,6 +1395,24 @@ class LlamaForCausalLM(LlamaPreTrainedModel):
             output = (logits,) + outputs[1:]
             return (loss,) + output if loss is not None else output
         
+        if output_pre_mlp_states:
+            if output_attentions:
+                return CausalLMOutputWithPast(
+                    loss=loss,
+                    logits=logits,
+                    past_key_values=outputs.past_key_values,
+                    hidden_states=outputs.hidden_states,
+                    attentions=outputs.attentions,
+                    # other={'all_original_hidden_states': all_original_hidden_states}
+                ), all_original_hidden_states
+            else:
+                return CausalLMOutputWithPast(
+                    loss=loss,
+                    logits=logits,
+                    past_key_values=outputs.past_key_values,
+                    hidden_states=outputs.hidden_states,
+                    attentions=outputs.attentions,
+                ), all_original_hidden_states
         if output_attentions:
             return CausalLMOutputWithPast(
                 loss=loss,
