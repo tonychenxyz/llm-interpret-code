@@ -244,8 +244,9 @@ class LlamaMLP(nn.Module):
             ]
             down_proj = sum(down_proj)
         else:
+            # print("inside llama")
+            # print(self.gate_proj.weight)
             down_proj = self.down_proj(self.act_fn(self.gate_proj(x)) * self.up_proj(x))
-
         return down_proj
 
 
